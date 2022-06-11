@@ -1,15 +1,31 @@
 package linkedlist
 
 type Node struct {
-	Value int
-	Next  *Node
+	value int
+	next  *Node
 }
 
 func NewNode(val int) *Node {
 	return &Node{
-		Value: val,
-		Next:  nil,
+		value: val,
+		next:  nil,
 	}
+}
+
+func (n *Node) GetNext() *Node {
+	return n.next
+}
+
+func (n *Node) SetNext(nxt *Node) {
+	n.next = nxt
+}
+
+func (n *Node) GetValue() int {
+	return n.value
+}
+
+func (n *Node) SetValue(val int) {
+	n.value = val
 }
 
 type LinkedList interface {
@@ -20,6 +36,10 @@ type LinkedList interface {
 
 	// fetch from the list
 	GetFromPos(pos int) (int, error)
+
+	// delete from the list
+	DeleteByPos(pos int) error
+	DeleteByValue(value int) error
 }
 
 type LL struct {

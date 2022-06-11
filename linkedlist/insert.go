@@ -8,12 +8,12 @@ func (l *LL) InsertAtEnd(value int) {
 
 	// go to the very end
 	temp := l.GetHead()
-	for temp.Next != nil {
-		temp = temp.Next
+	for temp.GetNext() != nil {
+		temp = temp.GetNext()
 	}
 
 	// link to last node
-	temp.Next = NewNode(value)
+	temp.SetNext(NewNode(value))
 }
 
 func (l *LL) InsertAtBeg(value int) {
@@ -24,7 +24,7 @@ func (l *LL) InsertAtBeg(value int) {
 	// point the new node to node pointed by head
 	// then point head to the new node
 	newNode := NewNode(value)
-	newNode.Next = l.GetHead()
+	newNode.SetNext(l.GetHead())
 	l.SetHead(newNode)
 }
 
@@ -34,16 +34,16 @@ func (l *LL) InsertAtPos(value int, pos int) {
 		return
 	}
 	first := l.GetHead()
-	second := l.GetHead().Next
+	second := l.GetHead().GetNext()
 	newNode := NewNode(value)
 	s := 1
 	for second != nil {
 		if s == pos {
-			newNode.Next = second
-			first.Next = newNode
+			newNode.SetNext(second)
+			first.SetNext(newNode)
 		}
-		first = first.Next
-		second = second.Next
+		first = first.GetNext()
+		second = second.GetNext()
 		s++
 	}
 }

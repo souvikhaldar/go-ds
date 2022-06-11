@@ -17,4 +17,11 @@ func TestInsert(t *testing.T) {
 		t.Fatal("1 should be found at position 1 but got: ", data)
 	}
 
+	l.DeleteByPos(0)
+	t.Log("After deleting 0th node")
+	l.PrintList()
+	l.DeleteByValue(3)
+	t.Log("After deleting 4th node")
+	l.PrintList()
+
 }

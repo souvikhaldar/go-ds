@@ -6,8 +6,8 @@ func (l *LL) Iterate() []int {
 	out := make([]int, 0)
 	temp := l.GetHead()
 	for temp != nil {
-		out = append(out, temp.Value)
-		temp = temp.Next
+		out = append(out, temp.GetValue())
+		temp = temp.GetNext()
 	}
 	return out
 }
