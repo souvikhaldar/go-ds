@@ -24,4 +24,23 @@ func TestInsert(t *testing.T) {
 	t.Log("After deleting 4th node")
 	l.PrintList()
 
+	t.Log("Reversing")
+	l.Reverse()
+	l.PrintList()
+
+}
+
+func TestReverse(t *testing.T) {
+	l := NewLinkedList()
+	l.InsertAtEnd(1)
+	l.InsertAtEnd(2)
+	l.InsertAtEnd(3)
+	l.InsertAtEnd(4)
+	l.InsertAtEnd(5)
+	l.PrintList()
+
+	t.Log("Reversing")
+
+	l.Reverse()
+	l.PrintList()
 }
