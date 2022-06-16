@@ -37,10 +37,14 @@ func TestReverse(t *testing.T) {
 	l.InsertAtEnd(3)
 	l.InsertAtEnd(4)
 	l.InsertAtEnd(5)
-	l.PrintList()
-
-	t.Log("Reversing")
 
 	l.Reverse()
-	l.PrintList()
+	if l.GetHead().GetValue() != 5 {
+		t.Fatal("Iterative reverse failed: got head value ", l.GetHead().GetValue())
+	}
+	l.ReverseRecursively(l.GetHead())
+	if l.GetHead().GetValue() != 1 {
+		t.Fatal("Iterative reverse failed: got head value ", l.GetHead().GetValue())
+	}
+
 }

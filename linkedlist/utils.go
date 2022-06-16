@@ -43,6 +43,16 @@ func (l *LL) Reverse() {
 	l.SetHead(second)
 }
 
-func (l *LL) ReverseRecursively() {
+func (l *LL) ReverseRecursively(node *Node) {
+	if node.GetNext() == nil {
+		// the last node
 
+		// make the head point to this node
+		l.SetHead(node)
+		return
+	}
+	l.ReverseRecursively(node.GetNext())
+	node.GetNext().SetNext(node)
+	node.SetNext(nil)
+	return
 }
