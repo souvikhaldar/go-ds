@@ -14,16 +14,16 @@ func (s StacksList) Pop() (int, error) {
 	if err != nil {
 		return el, err
 	}
-	err := s.LinkedList.DeleteByPos(0)
+	err = s.LinkedList.DeleteByPos(0)
 	return el, err
 }
 
 // Top retuns the element from the top of the stack
-func (s StacksList) Top() (int, err) {
+func (s StacksList) Top() (int, error) {
 	return s.LinkedList.GetFromPos(0)
 }
 
 func (s StacksList) IsEmpty() bool {
-	el, err := s.LinkedList.GetFromPos(0)
+	_, err := s.LinkedList.GetFromPos(0)
 	return err != nil
 }

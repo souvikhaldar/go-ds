@@ -12,3 +12,9 @@ type Stacks interface {
 type StacksList struct {
 	LinkedList linkedlist.LinkedList
 }
+
+func NewStacks() *StacksList {
+	return &StacksList{
+		LinkedList: linkedlist.NewLinkedList(),
+	}
+}
