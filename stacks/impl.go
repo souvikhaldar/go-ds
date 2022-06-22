@@ -1,5 +1,7 @@
 package stacks
 
+import "fmt"
+
 // Push puts an element on top of the stack
 // which while implementing using a linked list
 // essentially means adding a new node at the beginning
@@ -26,4 +28,12 @@ func (s StacksList) Top() (int, error) {
 func (s StacksList) IsEmpty() bool {
 	_, err := s.LinkedList.GetFromPos(0)
 	return err != nil
+}
+
+func (s StacksList) Print() {
+	temp := s.LinkedList.GetHead()
+	for temp != nil {
+		fmt.Println(temp.GetValue())
+		temp = temp.GetNext()
+	}
 }

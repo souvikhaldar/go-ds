@@ -16,4 +16,11 @@ func TestPush(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.Equal(t, tos, 1)
+	el, err := s.Pop()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, el, 1)
 }
+
+//

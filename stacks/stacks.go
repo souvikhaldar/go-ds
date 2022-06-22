@@ -7,6 +7,7 @@ type Stacks interface {
 	Pop() (int, error)
 	Top() (int, error)
 	IsEmpty() bool
+	Print()
 }
 
 type StacksList struct {

@@ -29,6 +29,7 @@ func (n *Node) SetValue(val int) {
 }
 
 type LinkedList interface {
+	GetHead() *Node
 	// inserting to the list
 	InsertAtEnd(value int)
 	InsertAtBeg(value int)
