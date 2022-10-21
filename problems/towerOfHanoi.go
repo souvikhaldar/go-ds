@@ -6,6 +6,7 @@ import (
 	"github.com/souvikhaldar/go-ds/stacks"
 )
 
+// Graphical represtaation of 2 disks TOH
 func TwoDisksTOH() {
 	src := stacks.NewStacks()
 	src.Push(2)
