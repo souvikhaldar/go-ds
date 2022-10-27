@@ -1,6 +1,9 @@
 package bst
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 var (
 	ErrEmptyTree   = errors.New("tree is empty")
@@ -127,4 +130,12 @@ func FindMaxNodeInTree(root *Node) *Node {
 		return root
 	}
 	return FindMaxNodeInTree(root.Right)
+}
+
+func PrintPreOrder(node *Node) {
+	if node == nil {
+		return
+	}
+	PrintPreOrder(node.Left)
+	fmt.Println(node.Value)
 }
