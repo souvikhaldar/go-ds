@@ -7,11 +7,9 @@ type Node struct {
 }
 
 func NewNode(val int) *Node {
-	return &Node{
-		Value: val,
-		Left:  nil,
-		Right: nil,
-	}
+	node := new(Node)
+	node.Value = val
+	return node
 }
 
 type BST interface {
