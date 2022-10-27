@@ -3,6 +3,8 @@ package bst
 import (
 	"errors"
 	"fmt"
+
+	"github.com/souvikhaldar/go-ds/queue"
 )
 
 var (
@@ -132,10 +134,19 @@ func FindMaxNodeInTree(root *Node) *Node {
 	return FindMaxNodeInTree(root.Right)
 }
 
-func PrintPreOrder(node *Node) {
-	if node == nil {
+func (ibst *IterativeBst) PrintLevelOrder() {
+	q := queue.NewQueue()
+	if ibst.Root == nil {
 		return
 	}
-	PrintPreOrder(node.Left)
-	fmt.Println(node.Value)
+	temp := ibst.Root
+	for temp != nil {
+		fmt.Println(temp.Value)
+		q.Enqueue(temp.Left)
+		q.Enqueue(temp.Right)
+		for !q.IsEmpty() {
+			val, _ := q.Dequeue()
+			fmt.Println(val)
+		}
+	}
 }

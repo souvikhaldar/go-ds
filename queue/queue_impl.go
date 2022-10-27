@@ -6,11 +6,11 @@ import (
 )
 
 type Node struct {
-	Value int
+	Value interface{}
 	Next  *Node
 }
 
-func NewNode(val int) *Node {
+func NewNode(val interface{}) *Node {
 	return &Node{
 		Value: val,
 		Next:  nil,
@@ -29,7 +29,7 @@ func NewQueue() *Queue {
 	}
 }
 
-func (q *Queue) Enqueue(val int) {
+func (q *Queue) Enqueue(val interface{}) {
 	newNode := NewNode(val)
 	if q.Front == q.Rear && q.Front == nil {
 		q.Front = newNode
@@ -41,7 +41,7 @@ func (q *Queue) Enqueue(val int) {
 	return
 }
 
-func (q *Queue) Dequeue() (int, error) {
+func (q *Queue) Dequeue() (interface{}, error) {
 	if q.Front == q.Rear && q.Front == nil {
 		return 0, errors.New("empty queue")
 	}
@@ -56,4 +56,11 @@ func (q *Queue) PrintQueue() {
 		fmt.Println(temp.Value)
 		temp = temp.Next
 	}
+}
+
+func (q *Queue) IsEmpty() bool {
+	if q.Front == q.Rear && q.Front == nil {
+		return true
+	}
+	return false
 }
