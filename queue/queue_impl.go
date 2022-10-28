@@ -31,7 +31,7 @@ func NewQueue() *Queue {
 
 func (q *Queue) Enqueue(val interface{}) {
 	newNode := NewNode(val)
-	if q.Front == q.Rear && q.Front == nil {
+	if q.IsEmpty() {
 		q.Front = newNode
 		q.Rear = newNode
 		return
@@ -42,11 +42,14 @@ func (q *Queue) Enqueue(val interface{}) {
 }
 
 func (q *Queue) Dequeue() (interface{}, error) {
-	if q.Front == q.Rear && q.Front == nil {
+	if q.IsEmpty() {
 		return 0, errors.New("empty queue")
 	}
+
 	temp := q.Front
-	q.Front = q.Front.Next
+	if q.Front != nil {
+		q.Front = q.Front.Next
+	}
 	return temp.Value, nil
 }
 
@@ -59,7 +62,7 @@ func (q *Queue) PrintQueue() {
 }
 
 func (q *Queue) IsEmpty() bool {
-	if q.Front == q.Rear && q.Front == nil {
+	if q.Front == nil {
 		return true
 	}
 	return false

@@ -21,8 +21,9 @@ func TestInsert(t *testing.T) {
 	if bst.Search(3) == true {
 		t.Fatal("3 is not present")
 	}
-	bst.Delete(5)
-	if bst.Search(5) == true {
-		t.Fatal("5 is not present")
-	}
+	//bst.Delete(5)
+	//if bst.Search(5) == true {
+	//	t.Fatal("5 is not present")
+	//}
+	bst.PrintLevelOrder()
 }

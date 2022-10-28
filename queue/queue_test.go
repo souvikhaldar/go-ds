@@ -20,4 +20,5 @@ func TestQueue(t *testing.T) {
 	if val != 5 {
 		t.Fatal("Should be 5")
 	}
+	q.Dequeue()
 }

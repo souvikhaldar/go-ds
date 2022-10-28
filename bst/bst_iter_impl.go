@@ -139,14 +139,28 @@ func (ibst *IterativeBst) PrintLevelOrder() {
 	if ibst.Root == nil {
 		return
 	}
-	temp := ibst.Root
-	for temp != nil {
-		fmt.Println(temp.Value)
-		q.Enqueue(temp.Left)
-		q.Enqueue(temp.Right)
-		for !q.IsEmpty() {
-			val, _ := q.Dequeue()
-			fmt.Println(val)
+	q.Enqueue(ibst.Root)
+	for !q.IsEmpty() {
+		val, err := q.Dequeue()
+		if err != nil {
+			fmt.Println(err)
+			return
 		}
+		node, ok := val.(*Node)
+		if !ok {
+			fmt.Println("Unable to assert to type *Node")
+			return
+		}
+		fmt.Println(node.Value)
+		if node.Left != nil {
+			fmt.Println("Enqueueing: ", node.Left.Value)
+			q.Enqueue(node.Left)
+		}
+		if node.Right != nil {
+			fmt.Println("Enqueueing: ", node.Right.Value)
+			q.Enqueue(node.Right)
+		}
+		fmt.Println("Status of queue: ")
+		q.PrintQueue()
 	}
 }
