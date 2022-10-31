@@ -3,6 +3,9 @@ package linkedlist
 import "fmt"
 
 func (l *LL) DeleteByPos(pos int) error {
+	if l.GetHead() == nil {
+		return ErrEmptyList
+	}
 	// delete the 0th node
 	if pos == 0 {
 		l.SetHead(l.GetHead().GetNext())
@@ -25,6 +28,9 @@ func (l *LL) DeleteByPos(pos int) error {
 }
 
 func (l *LL) DeleteByValue(value interface{}) error {
+	if l.GetHead() == nil {
+		return ErrEmptyList
+	}
 	// delete the 0th node
 	if l.GetHead().GetValue() == value {
 		l.SetHead(l.GetHead().GetNext())

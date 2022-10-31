@@ -1,5 +1,11 @@
 package linkedlist
 
+import "errors"
+
+var (
+	ErrEmptyList = errors.New("Linked list is empty")
+)
+
 type Node struct {
 	value interface{}
 	next  *Node
