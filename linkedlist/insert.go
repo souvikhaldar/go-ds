@@ -1,6 +1,6 @@
 package linkedlist
 
-func (l *LL) InsertAtEnd(value int) {
+func (l *LL) InsertAtEnd(value interface{}) {
 	if l.GetHead() == nil {
 		l.SetHead(NewNode(value))
 		return
@@ -16,7 +16,7 @@ func (l *LL) InsertAtEnd(value int) {
 	temp.SetNext(NewNode(value))
 }
 
-func (l *LL) InsertAtBeg(value int) {
+func (l *LL) InsertAtBeg(value interface{}) {
 	if l.GetHead() == nil {
 		l.SetHead(NewNode(value))
 		return
@@ -28,7 +28,7 @@ func (l *LL) InsertAtBeg(value int) {
 	l.SetHead(newNode)
 }
 
-func (l *LL) InsertAtPos(value int, pos int) {
+func (l *LL) InsertAtPos(value interface{}, pos int) {
 	if pos == 0 {
 		l.InsertAtBeg(value)
 		return

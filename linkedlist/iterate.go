@@ -2,8 +2,8 @@ package linkedlist
 
 import "fmt"
 
-func (l *LL) Iterate() []int {
-	out := make([]int, 0)
+func (l *LL) Iterate() []interface{} {
+	out := make([]interface{}, 0)
 	temp := l.GetHead()
 	for temp != nil {
 		out = append(out, temp.GetValue())

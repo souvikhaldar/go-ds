@@ -2,7 +2,7 @@ package linkedlist
 
 import "fmt"
 
-func (l *LL) GetFromPos(pos int) (int, error) {
+func (l *LL) GetFromPos(pos int) (interface{}, error) {
 	temp := l.GetHead()
 	for i := 0; temp != nil; i++ {
 		if i == pos {
@@ -10,5 +10,5 @@ func (l *LL) GetFromPos(pos int) (int, error) {
 		}
 		temp = temp.GetNext()
 	}
-	return 0, fmt.Errorf("position not found")
+	return nil, fmt.Errorf("position not found")
 }

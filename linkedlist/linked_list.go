@@ -1,11 +1,11 @@
 package linkedlist
 
 type Node struct {
-	value int
+	value interface{}
 	next  *Node
 }
 
-func NewNode(val int) *Node {
+func NewNode(val interface{}) *Node {
 	return &Node{
 		value: val,
 		next:  nil,
@@ -20,27 +20,27 @@ func (n *Node) SetNext(nxt *Node) {
 	n.next = nxt
 }
 
-func (n *Node) GetValue() int {
+func (n *Node) GetValue() interface{} {
 	return n.value
 }
 
-func (n *Node) SetValue(val int) {
+func (n *Node) SetValue(val interface{}) {
 	n.value = val
 }
 
 type LinkedList interface {
 	GetHead() *Node
 	// inserting to the list
-	InsertAtEnd(value int)
-	InsertAtBeg(value int)
-	InsertAtPos(value int, pos int)
+	InsertAtEnd(value interface{})
+	InsertAtBeg(value interface{})
+	InsertAtPos(value interface{}, pos int)
 
 	// fetch from the list
-	GetFromPos(pos int) (int, error)
+	GetFromPos(pos int) (interface{}, error)
 
 	// delete from the list
 	DeleteByPos(pos int) error
-	DeleteByValue(value int) error
+	DeleteByValue(value interface{}) error
 }
 
 type LL struct {

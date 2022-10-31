@@ -24,7 +24,7 @@ func (l *LL) DeleteByPos(pos int) error {
 	return fmt.Errorf("Node not found")
 }
 
-func (l *LL) DeleteByValue(value int) error {
+func (l *LL) DeleteByValue(value interface{}) error {
 	// delete the 0th node
 	if l.GetHead().GetValue() == value {
 		l.SetHead(l.GetHead().GetNext())

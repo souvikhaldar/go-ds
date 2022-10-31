@@ -166,3 +166,18 @@ func (ibst *IterativeBst) PrintLevelOrder() {
 		}
 	}
 }
+
+// PreOrder prints in the order of root, left then right
+func (ibst *IterativeBst) PreOrder() {
+	if ibst.Root == nil {
+		return
+	}
+	temp := ibst.Root
+	// TODO: Use stack
+	q := queue.NewQueue()
+	for temp != nil {
+		fmt.Println(temp.Value)
+		q.Enqueue(temp.Left)
+		q.Enqueue(temp.Right)
+	}
+}
