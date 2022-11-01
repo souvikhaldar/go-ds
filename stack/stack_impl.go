@@ -32,3 +32,7 @@ func (s *Stack) Pop() (interface{}, error) {
 	err := s.Tos.DeleteByPos(0)
 	return val, err
 }
+
+func (s *Stack) IsEmpty() bool {
+	return s.Tos == nil
+}

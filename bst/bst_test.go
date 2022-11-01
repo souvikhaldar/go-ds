@@ -26,4 +26,19 @@ func TestInsert(t *testing.T) {
 	bst.Delete(2)
 	bst.Delete(9)
 	bst.PrintLevelOrder()
+
+}
+
+func TestPrint(t *testing.T) {
+
+	bst := NewIterativeBst()
+	bst.Insert(NewNode(2))
+	bst.Insert(NewNode(5))
+	bst.Insert(NewNode(1))
+	bst.Insert(NewNode(8))
+	bst.Insert(NewNode(4))
+	bst.Insert(NewNode(9))
+	bst.Insert(NewNode(3))
+	bst.Insert(NewNode(6))
+	bst.PreOrder()
 }

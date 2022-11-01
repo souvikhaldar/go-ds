@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/souvikhaldar/go-ds/queue"
+	"github.com/souvikhaldar/go-ds/stack"
 )
 
 var (
@@ -167,17 +168,29 @@ func (ibst *IterativeBst) PrintLevelOrder() {
 	}
 }
 
+// TODO: It is failing!!!!!!!!!!!
 // PreOrder prints in the order of root, left then right
 func (ibst *IterativeBst) PreOrder() {
 	if ibst.Root == nil {
 		return
 	}
 	temp := ibst.Root
-	// TODO: Use stack
-	q := queue.NewQueue()
+	s := stack.NewStack()
 	for temp != nil {
 		fmt.Println(temp.Value)
-		q.Enqueue(temp.Left)
-		q.Enqueue(temp.Right)
+		if temp.Right != nil {
+			s.Push(temp.Right)
+		}
+
+		if temp.Left == nil {
+			t, _ := s.Pop()
+			var ok bool
+			temp, ok = t.(*Node)
+			if !ok {
+				return
+			}
+		} else {
+			temp = temp.Left
+		}
 	}
 }
