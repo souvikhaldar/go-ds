@@ -40,5 +40,10 @@ func TestPrint(t *testing.T) {
 	bst.Insert(NewNode(9))
 	bst.Insert(NewNode(3))
 	bst.Insert(NewNode(6))
-	bst.PreOrder()
+	bst.Insert(NewNode(-2))
+	bst.Insert(NewNode(-1))
+	bst.Insert(NewNode(14))
+	bst.Insert(NewNode(13))
+	//bst.PreOrder()
+	bst.InOrder()
 }

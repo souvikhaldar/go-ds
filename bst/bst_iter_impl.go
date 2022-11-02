@@ -168,7 +168,6 @@ func (ibst *IterativeBst) PrintLevelOrder() {
 	}
 }
 
-// TODO: It is failing!!!!!!!!!!!
 // PreOrder prints in the order of root, left then right
 func (ibst *IterativeBst) PreOrder() {
 	if ibst.Root == nil {
@@ -192,5 +191,29 @@ func (ibst *IterativeBst) PreOrder() {
 		} else {
 			temp = temp.Left
 		}
+	}
+}
+
+// InOrder prints left, root, right
+func (ibst *IterativeBst) InOrder() {
+	if ibst.Root == nil {
+		return
+	}
+	temp := ibst.Root
+	s := stack.NewStack()
+
+	for temp != nil || !s.IsEmpty() {
+		if temp == nil {
+			t, _ := s.Pop()
+			if t == nil {
+				return
+			}
+			temp, _ = t.(*Node)
+			fmt.Println(temp.Value)
+			temp = temp.Right
+			continue
+		}
+		s.Push(temp)
+		temp = temp.Left
 	}
 }
