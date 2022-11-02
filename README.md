@@ -23,4 +23,14 @@ func main() {
 
 }
 ```
+Output:  
+```
+go run minMaxBst.go
 
+1
+1
+3
+5
+9
+
+```
