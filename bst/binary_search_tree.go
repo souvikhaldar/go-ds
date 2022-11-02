@@ -13,7 +13,7 @@ func NewNode(val int) *Node {
 }
 
 type BST interface {
-	Insert(*Node) error
+	Insert(int) error
 	Search(int) bool
 	Delete(int) error
 }

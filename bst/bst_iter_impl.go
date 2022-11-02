@@ -27,7 +27,8 @@ func NewIterativeBst() *IterativeBst {
 	}
 }
 
-func (ibst *IterativeBst) Insert(node *Node) error {
+func (ibst *IterativeBst) Insert(val int) error {
+	node := NewNode(val)
 	if ibst.Root == nil {
 		ibst.Root = node
 		return nil
