@@ -18,14 +18,14 @@ func FindMaxNodeInTree(root *Node) *Node {
 	return FindMaxNodeInTree(root.Right)
 }
 
-func isALeafNode(node *Node) bool {
+func IsALeafNode(node *Node) bool {
 	if node.Left == nil && node.Right == nil {
 		return true
 	}
 	return false
 }
 
-func isNodeWithOneChild(node *Node) bool {
+func IsNodeWithOneChild(node *Node) bool {
 	if (node.Left == nil && node.Right != nil) || (node.Left != nil && node.Right == nil) {
 		return true
 	}

@@ -90,7 +90,7 @@ func (ibst *IterativeBst) Delete(val int) error {
 		if val == temp.Value {
 			// check for the above three cases
 			// Case 1. is it a leaf node?
-			if isALeafNode(temp) {
+			if IsALeafNode(temp) {
 				// then simply delete the node
 				if parent.Left.Value == temp.Value {
 					parent.Left = nil
@@ -98,7 +98,7 @@ func (ibst *IterativeBst) Delete(val int) error {
 					parent.Right = nil
 				}
 				return nil
-			} else if isNodeWithOneChild(temp) {
+			} else if IsNodeWithOneChild(temp) {
 				// Case 2. a node with only one child
 
 				// bypas the connection to the child
