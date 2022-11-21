@@ -25,7 +25,6 @@ func TestInsert(t *testing.T) {
 	}
 	bst.Delete(2)
 	bst.Delete(9)
-	bst.PrintLevelOrder()
 
 }
 
