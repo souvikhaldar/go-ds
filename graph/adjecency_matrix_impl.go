@@ -4,23 +4,25 @@ import (
 	"github.com/souvikhaldar/go-ds/queue"
 )
 
-const (
-	MAX_ROW = 10
-	MAX_COL = 10
-)
-
 type AMGraph struct {
-	AdjacencyMatrix [MAX_ROW][MAX_COL]string
+	AdjacencyMatrix [][]string
 	vertexMap       map[string]int
 	reverseMap      map[int]string
 	vertexCount     int
 }
 
-func NewAMGraph() *AMGraph {
+// NewAMGraph create a graph which will be stored in
+// adjancency matrix of mr rows and mc columns
+func NewAMGraph(mr, mc int) *AMGraph {
+	am := make([][]string, mr)
+	for i := range am {
+		am[i] = make([]string, mc)
+	}
 	return &AMGraph{
-		vertexMap:   make(map[string]int),
-		reverseMap:  make(map[int]string),
-		vertexCount: 0,
+		AdjacencyMatrix: am,
+		vertexMap:       make(map[string]int),
+		reverseMap:      make(map[int]string),
+		vertexCount:     0,
 	}
 }
 

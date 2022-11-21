@@ -3,7 +3,7 @@ package graph
 import "testing"
 
 func TestBFS(t *testing.T) {
-	g := NewAMGraph()
+	g := NewAMGraph(8, 8)
 	g.AddNode("a", "b", "brother")
 	g.AddNode("a", "c", "sister")
 	g.AddNode("a", "d", "hijda")
