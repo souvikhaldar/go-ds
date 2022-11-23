@@ -45,9 +45,6 @@ func (a *AMGraph) AddNode(
 	// TODO: check if it's a valid relationship
 
 	a.AdjacencyMatrix[sn][nn] = relationShip
-	// add relationship both ways since it's an
-	// undirected graph
-	a.AdjacencyMatrix[nn][sn] = relationShip
 }
 
 func (a *AMGraph) DeleteNode(nodeName string) {
