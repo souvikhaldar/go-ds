@@ -6,4 +6,6 @@ type Graph interface {
 	SearchNode(nodeName string) bool
 	GetNeighboursOf(nodeName string) []string
 	BFS(startNode string) []string
+	GetAllNodes() []string
+	GetRelationBetween(firstNode, secondNode string) string
 }

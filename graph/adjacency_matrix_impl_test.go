@@ -18,4 +18,10 @@ func TestBFS(t *testing.T) {
 	if g.SearchNode("b") {
 		t.Fatal("b should not be present")
 	}
+	if len(g.GetAllNodes()) == 0 {
+		t.Fatal("Failed to get all nodes")
+	}
+	if g.GetRelationBetween("a", "c") == "" {
+		t.Fatal("Relation missing")
+	}
 }

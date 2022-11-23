@@ -112,3 +112,26 @@ func (a *AMGraph) BFS(startNode string) []string {
 	return nodes
 
 }
+
+func (a *AMGraph) GetAllNodes() []string {
+	var nodes []string
+	for n, _ := range a.vertexMap {
+		nodes = append(nodes, n)
+	}
+	return nodes
+}
+
+// GetRelationBetween returns the relationship between the two given
+// nodes.
+// It returns empty string if there is no relation
+func (a *AMGraph) GetRelationBetween(firstNode, secondNode string) string {
+	first, ok := a.getNodeInt(firstNode)
+	if !ok {
+		return ""
+	}
+	second, ok := a.getNodeInt(secondNode)
+	if !ok {
+		return ""
+	}
+	return a.AdjacencyMatrix[first][second]
+}
