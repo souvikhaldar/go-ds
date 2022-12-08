@@ -2,6 +2,7 @@ package graph
 
 import (
 	"github.com/souvikhaldar/go-ds/queue"
+	"github.com/souvikhaldar/go-ds/stack"
 )
 
 type AMGraph struct {
@@ -83,6 +84,9 @@ func (a *AMGraph) GetNeighboursOf(nodeName string) []string {
 	return neighbours
 }
 
+//We explore nodes of the graph layer by layer, meaning we explore all the nodes connected to a node, and
+// then proceed further. This becomes useful in finding the shortest path between the nodes. It can also help
+// find all the **Connected Componenets** (i.e a subgraph in which all nodes are connected) in a graph.
 func (a *AMGraph) BFS(startNode string) []string {
 	q := queue.NewQueue()
 	explored := make(map[string]bool)
@@ -108,6 +112,42 @@ func (a *AMGraph) BFS(startNode string) []string {
 	}
 	return nodes
 
+}
+
+// DFS (Depth First Search): We explore nodes one after the other without exploring other nodes at the
+// same level, and we backtrack only when required, like when no more nodes are left to be explored
+// at a given level. For the implementation of this traversal, we use **Stacks** instead of Queue that
+// is used in BFS. Time complexity is the same as BFS i.e O(n) where n is the number of nodes, or, linear time complexity.
+func (a *AMGraph) DFS(startNode string) []string {
+	// keep track of all the explored nodes
+	explored := make(map[string]struct{})
+	s := stack.NewStack()
+	s.Push(startNode)
+
+	var nodes []string
+	// keep traversing till stack is not empty
+	for !s.IsEmpty() {
+		tn, err := s.Pop()
+		if err != nil {
+			panic(err)
+		}
+		n, ok := tn.(string)
+		if !ok {
+			panic("Error in type assertion")
+		}
+		if _, ok := explored[n]; ok {
+			// this node has already been explored
+			continue
+		}
+		// mark it as explored
+		explored[n] = struct{}{}
+		nodes = append(nodes, n)
+
+		for _, nb := range a.GetNeighboursOf(n) {
+			s.Push(nb)
+		}
+	}
+	return nodes
 }
 
 func (a *AMGraph) GetAllNodes() []string {

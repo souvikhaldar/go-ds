@@ -25,7 +25,7 @@ func (s *Stack) Push(val interface{}) {
 }
 
 func (s *Stack) Pop() (interface{}, error) {
-	if s.Tos == nil {
+	if s.Tos.GetHead() == nil {
 		return nil, ErrEmptyStack
 	}
 	val, _ := s.Tos.GetFromPos(0)
@@ -34,5 +34,5 @@ func (s *Stack) Pop() (interface{}, error) {
 }
 
 func (s *Stack) IsEmpty() bool {
-	return s.Tos == nil
+	return s.Tos.GetHead() == nil
 }
