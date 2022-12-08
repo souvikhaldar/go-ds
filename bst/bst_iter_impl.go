@@ -142,24 +142,26 @@ func (ibst *IterativeBst) Delete(val int) error {
 	return ErrValNotFound
 }
 
-func (ibst *IterativeBst) PrintLevelOrder() {
+func (ibst *IterativeBst) LevelOrder() []int {
+	res := make([]int, 0)
 	q := queue.NewQueue()
 	if ibst.Root == nil {
-		return
+		return res
 	}
 	q.Enqueue(ibst.Root)
 	for !q.IsEmpty() {
 		val, err := q.Dequeue()
 		if err != nil {
 			fmt.Println(err)
-			return
+			return res
 		}
 		node, ok := val.(*Node)
 		if !ok {
 			fmt.Println("Unable to assert to type *Node")
-			return
+			return res
 		}
 		fmt.Println(node.Value)
+		res = append(res, node.Value)
 		if node.Left != nil {
 			q.Enqueue(node.Left)
 		}
@@ -167,17 +169,20 @@ func (ibst *IterativeBst) PrintLevelOrder() {
 			q.Enqueue(node.Right)
 		}
 	}
+	return res
 }
 
 // PreOrder prints in the order of root, left then right
-func (ibst *IterativeBst) PreOrder() {
+func (ibst *IterativeBst) PreOrder() []int {
 	if ibst.Root == nil {
-		return
+		return nil
 	}
+	res := make([]int, 0)
 	temp := ibst.Root
 	s := stack.NewStack()
 	for temp != nil {
 		fmt.Println(temp.Value)
+		res = append(res, temp.Value)
 		if temp.Right != nil {
 			s.Push(temp.Right)
 		}
@@ -187,19 +192,21 @@ func (ibst *IterativeBst) PreOrder() {
 			var ok bool
 			temp, ok = t.(*Node)
 			if !ok {
-				return
+				return res
 			}
 		} else {
 			temp = temp.Left
 		}
 	}
+	return res
 }
 
 // InOrder prints left, root, right
-func (ibst *IterativeBst) InOrder() {
+func (ibst *IterativeBst) InOrder() []int {
 	if ibst.Root == nil {
-		return
+		return nil
 	}
+	res := make([]int, 0)
 	temp := ibst.Root
 	s := stack.NewStack()
 
@@ -207,14 +214,16 @@ func (ibst *IterativeBst) InOrder() {
 		if temp == nil {
 			t, _ := s.Pop()
 			if t == nil {
-				return
+				return res
 			}
 			temp, _ = t.(*Node)
 			fmt.Println(temp.Value)
+			res = append(res, temp.Value)
 			temp = temp.Right
 			continue
 		}
 		s.Push(temp)
 		temp = temp.Left
 	}
+	return res
 }

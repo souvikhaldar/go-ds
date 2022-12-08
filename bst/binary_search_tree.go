@@ -16,4 +16,7 @@ type BST interface {
 	Insert(int) error
 	Search(int) bool
 	Delete(int) error
+	LevelOrder() []int
+	PreOrder() []int
+	InOrder() []int
 }

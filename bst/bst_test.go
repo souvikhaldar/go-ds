@@ -2,7 +2,7 @@ package bst
 
 import "testing"
 
-func TestInsert(t *testing.T) {
+func TestIterative(t *testing.T) {
 	bst := NewIterativeBst()
 	bst.Insert(2)
 	bst.Insert(5)
